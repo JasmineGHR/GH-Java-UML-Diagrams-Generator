@@ -1,12 +1,12 @@
 package org.mql.java.reflections;
 
-import java.util.List;
+
 
 import org.mql.java.elements.Package;
-import org.mql.java.elements.Relation;
-import org.mql.java.relations.Agregation;
-import org.mql.java.relations.Extention;
-import org.mql.java.relations.Use;
+
+
+import org.mql.java.relations.*;
+
 
 public class RelationExtractor {
 
@@ -29,10 +29,7 @@ public class RelationExtractor {
 				Relation ext=new Extention("extention", clas, clas.getSuperclass()) ;
 				pack.getRelations().add(ext) ;
 			}
-		
-		
-		
-		
+	
 		
 }
 

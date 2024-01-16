@@ -26,13 +26,18 @@ public class XMLSerializer {
             Document doc = docBuilder.newDocument();
 
             // Élément racine
-            Element rootElement = doc.createElement("Packages");
+            Element rootElement = doc.createElement("Project");
             doc.appendChild(rootElement);
+            Element name = doc.createElement("Name");
+            name.appendChild(doc.createTextNode(projet.getChemin()));
+            rootElement.appendChild(name);
+            Element packages = doc.createElement("Packages");
+            rootElement.appendChild(packages);
 
             // Ajouter des éléments pour chaque package et ses classes
             for (org.mql.java.elements.Package pkg : projet.getPackages()) {
                 Element packageElement = doc.createElement("Package");
-                rootElement.appendChild(packageElement);
+                packages.appendChild(packageElement);
 
                 Element packageNameElement = doc.createElement("PackageName");
                 packageNameElement.appendChild(doc.createTextNode(pkg.getName()));
@@ -47,6 +52,24 @@ public class XMLSerializer {
                     Element classElement = doc.createElement("Class");
                     classElement.appendChild(doc.createTextNode(className.getName()));
                     classesElement.appendChild(classElement);
+                    System.out.println("fffffffff");
+                }
+                for (Class<?> interfaceName : pkg.getListInterface()) {
+                    Element InterfaceElement = doc.createElement("Interface");
+                    InterfaceElement.appendChild(doc.createTextNode(interfaceName.getName()));
+                    classesElement.appendChild(InterfaceElement);
+                    System.out.println("fffffffff");
+                }
+                for (Class<?> annotationName : pkg.getListAnnot()) {
+                    Element annotationElement = doc.createElement("Annotation");
+                    annotationElement.appendChild(doc.createTextNode(annotationName.getName()));
+                    classesElement.appendChild(annotationElement);
+                    System.out.println("fffffffff");
+                }
+                for (Class<?> enumName : pkg.getListEnum()) {
+                    Element enumElement = doc.createElement("Enumeration");
+                    enumElement.appendChild(doc.createTextNode(enumName.getName()));
+                    classesElement.appendChild(enumElement);
                     System.out.println("fffffffff");
                 }
             }

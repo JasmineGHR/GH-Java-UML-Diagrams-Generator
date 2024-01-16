@@ -1,6 +1,7 @@
 package org.mql.java.reflections;
 
-import org.mql.java.elements.Relation;
+import org.mql.java.relations.*;
+
 import org.mql.java.xml.dom.XMLSerializer;
 
 public class test {
@@ -27,10 +28,9 @@ public class test {
 		}
 		}
   public static void main(String[] args) {
-	  ProjectExtractor projet=new ProjectExtractor("C:\\\\Users\\\\af\\\\eclipse-workspace\\\\ma-workspace\\\\p01-revision\\\\bin");
-
+	  ProjectExtractor projet=new ProjectExtractor("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p03-Annotations and Reflections\\bin");
 	  XMLSerializer serializer= new XMLSerializer() ;
-      serializer.serializeToXML(projet, "output/output.xml");
+      serializer.serializeToXML(projet, "output/projet.xml");
 	  //new test();
 }
 

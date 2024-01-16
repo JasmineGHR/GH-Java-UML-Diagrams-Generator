@@ -2,7 +2,10 @@ package org.mql.java.elements;
 
 import java.util.LinkedList;
 
+
 import java.util.List;
+
+import org.mql.java.relations.Relation;
 
 public class Package {
 	private String name ;

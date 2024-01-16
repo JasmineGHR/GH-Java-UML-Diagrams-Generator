@@ -1,4 +1,4 @@
-package org.mql.java.elements;
+package org.mql.java.relations;
 
 public class Relation {
 	

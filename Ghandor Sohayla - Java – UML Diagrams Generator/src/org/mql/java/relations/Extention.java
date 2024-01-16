@@ -1,6 +1,6 @@
 package org.mql.java.relations;
 
-import org.mql.java.elements.Relation;
+
 
 public class Extention extends Relation{
 

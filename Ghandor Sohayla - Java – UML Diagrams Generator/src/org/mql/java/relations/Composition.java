@@ -1,6 +1,5 @@
 package org.mql.java.relations;
 
-import org.mql.java.elements.Relation;
 
 public class Composition extends Relation{
 
