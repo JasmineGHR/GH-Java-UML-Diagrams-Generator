@@ -1,39 +1,45 @@
 package org.mql.java.reflections;
 
 import java.io.File;
+
 import java.util.List;
 
-import static org.mql.java.reflections.ExtractClasses.*;
-public class ExtractPackage {
+import org.mql.java.elements.Package;
 
-	public ExtractPackage() {
-		// TODO Auto-generated constructor stub
+import static org.mql.java.reflections.ClassExtractor.*;
+public class PackageExtractor {
+
+	
+	public PackageExtractor() {
+		
 	}
 	
-	public static void  extractPackages(String projectDirectory,List<String> struct) {
+	public static void  extractPackages(String projectDirectory,List<Package> packages) {
 	       
         File projectDir = new File(projectDirectory);
 
         if (projectDir.exists() && projectDir.isDirectory()) {
-            extractPackagesFromDirectory(projectDir, "",struct);
+            extractPackagesFromDirectory(projectDir, "",packages,projectDirectory);
         } else {
             System.err.println("Le répertoire du projet n'existe pas.");
         }
     }
 
-	private static void extractPackagesFromDirectory(File directory, String parentPackage,List<String> struct) {
+	private static void extractPackagesFromDirectory(File directory, String parentPackage,List<Package> packages,String projectDirectory) {
         File[] files = directory.listFiles();
         
         if (files != null) {
             for (File file : files) {
                 if (file.isDirectory()) {
                 	String packageName = parentPackage + file.getName();
-                    if (containsJavaFiles(file)) {                        
-                    	struct.add("package :"+packageName);
-                    	extractClasses(packageName,struct);
+                    if (containsJavaFiles(file)) {       
+                    	org.mql.java.elements.Package pkg=new org.mql.java.elements.Package(packageName);
+                    	packages.add(pkg) ;
+                    	//struct.add("package :"+packageName);
+                    	extractClasses(pkg,projectDirectory);
                         File souspackage =caintainsSousPackage(file);
-                        if(souspackage!=null) extractPackagesFromDirectory(file, packageName + ".",struct);
-                    }else  extractPackagesFromDirectory(file, packageName + ".",struct);
+                        if(souspackage!=null) extractPackagesFromDirectory(file, packageName + ".",packages,projectDirectory);
+                    }else  extractPackagesFromDirectory(file, packageName + ".",packages,projectDirectory);
                 }
             }
         }
