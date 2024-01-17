@@ -11,7 +11,7 @@ public class test {
 		ProjectExtractor p=new ProjectExtractor("C:\\\\Users\\\\af\\\\eclipse-workspace\\\\ma-workspace\\\\p01-revision\\\\bin");
 		
 		for (org.mql.java.elements.Package data : p.getPackages()) {
-				System.out.println(data.getName());
+				//System.out.println(data.getName());
 				for (Class<?> clas : data.getListClass()) {
 					System.out.println(clas.getName());					
 				}
@@ -31,7 +31,12 @@ public class test {
 	  ProjectExtractor projet=new ProjectExtractor("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p03-Annotations and Reflections\\bin");
 	  XMLSerializer serializer= new XMLSerializer() ;
       serializer.serializeToXML(projet, "output/projet.xml");
-	  //new test();
+      
+//      int[] tableauEntiers = new int[5];
+//      Class<?> typeComposant = tableauEntiers.getClass().getComponentType();
+//      System.out.println("Type des composants du tableau : " + typeComposant.getName());
+//      
+//	  new test();
 }
 
 }
