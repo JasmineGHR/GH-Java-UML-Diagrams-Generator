@@ -1,5 +1,6 @@
 package org.mql.java.reflections;
 
+import org.mql.java.elements.ProjectExtractor;
 import org.mql.java.relations.*;
 
 import org.mql.java.xml.dom.XMLSerializer;
@@ -21,14 +22,15 @@ public class test {
 				for (Class<?> clas : data.getListAnnot()) {
 					System.out.println(clas.getName());					
 				}	
-				for (Relation rela : data.getRelations()) {
-					System.out.println(rela.toString());
-					
-				}
+//				for (Relation rela : data.getRelations()) {
+//					System.out.println(rela.toString());
+//					
+//				}
 		}
 		}
   public static void main(String[] args) {
-	  ProjectExtractor projet=new ProjectExtractor("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p03-Annotations and Reflections\\bin");
+	  ProjectExtractor projet=new ProjectExtractor("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p01-revision\\bin");
+	  //C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p03-Annotations and Reflections\\bin
 	  XMLSerializer serializer= new XMLSerializer() ;
       serializer.serializeToXML(projet, "output/projet.xml");
       

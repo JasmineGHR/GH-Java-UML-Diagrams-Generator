@@ -1,5 +1,4 @@
 package org.mql.java.xml.dom;
-import org.mql.java.reflections.ProjectExtractor;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -8,6 +7,9 @@ import org.mql.java.relations.Agregation;
 import org.mql.java.relations.Extention;
 import org.mql.java.relations.Relation;
 import org.mql.java.relations.Use;
+import org.mql.java.elements.ProjectExtractor;
+
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -77,55 +79,56 @@ public class XMLSerializer {
                     enumElement.appendChild(doc.createTextNode(enumName.getName()));
                     classesElement.appendChild(enumElement);
                 }
-                Element relations = doc.createElement("Relations");
-                rootElement.appendChild(relations);
-                for (Relation relation : pkg.getRelations()) {
-                	if (relation instanceof Agregation) {
-                		Element agregation = doc.createElement("Agregation");
-                		relations.appendChild(agregation);
-                		
-                		Element agregated = doc.createElement("agregated");
-                		agregation.appendChild(agregated);
-                		Text agregatedText = doc.createTextNode(relation.getClas1().getName());
-                		agregated.appendChild(agregatedText);
-                		Element agregat = doc.createElement("agregat");
-                		agregation.appendChild(agregat);
-                		Text agregatText = doc.createTextNode(relation.getClas2().getName());
-                		agregat.appendChild(agregatText);
-                		
-					}
-                	if (relation instanceof Use) {
-                		Element utilisation = doc.createElement("Agregation");
-                		relations.appendChild(utilisation);
-                		
-                		Element class1 = doc.createElement("class1");
-                		utilisation.appendChild(class1);
-                		Text class1Text = doc.createTextNode(relation.getClas1().getName());
-                		class1.appendChild(class1Text);
-                		Element class2 = doc.createElement("class2");
-                		utilisation.appendChild(class2);
-                		Text class2Text = doc.createTextNode(relation.getClas2().getName());
-                		class2.appendChild(class2Text);
-						
-					}
-                	if (relation instanceof Extention) {
-                		Element Extention = doc.createElement("Extention");
-                		relations.appendChild(Extention);
-                		
-                		Element fils = doc.createElement("fils");
-                		Extention.appendChild(fils);
-                		Text filsText = doc.createTextNode(relation.getClas1().getName());
-                		fils.appendChild(filsText);
-                		Element parent = doc.createElement("parent");
-                		Extention.appendChild(parent);
-                		Text parentText = doc.createTextNode(relation.getClas2().getName());
-                		parent.appendChild(parentText);	
-					}
-					
-				}
+               
 
             }
 
+            Element relations = doc.createElement("Relations");
+            rootElement.appendChild(relations);
+            for (Relation relation : projet.getRelations()) {
+            	if (relation instanceof Agregation) {
+            		Element agregation = doc.createElement("Agregation");
+            		relations.appendChild(agregation);
+            		
+            		Element agregated = doc.createElement("agregated");
+            		agregation.appendChild(agregated);
+            		Text agregatedText = doc.createTextNode(relation.getClas1().getName());
+            		agregated.appendChild(agregatedText);
+            		Element agregat = doc.createElement("agregat");
+            		agregation.appendChild(agregat);
+            		Text agregatText = doc.createTextNode(relation.getClas2().getName());
+            		agregat.appendChild(agregatText);
+            		
+				}
+            	if (relation instanceof Use) {
+            		Element utilisation = doc.createElement("Utilisation");
+            		relations.appendChild(utilisation);
+            		
+            		Element class1 = doc.createElement("class1");
+            		utilisation.appendChild(class1);
+            		Text class1Text = doc.createTextNode(relation.getClas1().getName());
+            		class1.appendChild(class1Text);
+            		Element class2 = doc.createElement("class2");
+            		utilisation.appendChild(class2);
+            		Text class2Text = doc.createTextNode(relation.getClas2().getName());
+            		class2.appendChild(class2Text);
+					
+				}
+            	if (relation instanceof Extention) {
+            		Element Extention = doc.createElement("Extention");
+            		relations.appendChild(Extention);
+            		
+            		Element fils = doc.createElement("fils");
+            		Extention.appendChild(fils);
+            		Text filsText = doc.createTextNode(relation.getClas1().getName());
+            		fils.appendChild(filsText);
+            		Element parent = doc.createElement("parent");
+            		Extention.appendChild(parent);
+            		Text parentText = doc.createTextNode(relation.getClas2().getName());
+            		parent.appendChild(parentText);	
+				}
+				
+			}
             // Sauvegarder le contenu dans un fichier XML
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -140,8 +143,5 @@ public class XMLSerializer {
         }
     }
     
-    private static String cleanXmlName(String name) {
-        // Remplacez les caractères non valides par des caractères valides ou supprimez-les
-        return name.replaceAll("[^a-zA-Z0-9_]", "_");
-    }
+   
 }

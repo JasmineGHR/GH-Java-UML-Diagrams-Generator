@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.List;
 
 import org.mql.java.elements.Package;
+import org.mql.java.elements.ProjectExtractor;
 
 import static org.mql.java.reflections.ClassExtractor.*;
 public class PackageExtractor {
@@ -14,18 +15,18 @@ public class PackageExtractor {
 		
 	}
 	
-	public static void  extractPackages(String projectDirectory,List<Package> packages) {
+	public static void  extractPackages(ProjectExtractor projet,List<Package> packages) {
 	       
-        File projectDir = new File(projectDirectory);
+        File projectDir = new File(projet.getChemin());
 
         if (projectDir.exists() && projectDir.isDirectory()) {
-            extractPackagesFromDirectory(projectDir, "",packages,projectDirectory);
+            extractPackagesFromDirectory(projectDir, "",packages,projet);
         } else {
             System.err.println("Le répertoire du projet n'existe pas.");
         }
     }
 
-	private static void extractPackagesFromDirectory(File directory, String parentPackage,List<Package> packages,String projectDirectory) {
+	private static void extractPackagesFromDirectory(File directory, String parentPackage,List<Package> packages,ProjectExtractor projet) {
         File[] files = directory.listFiles();
         
         if (files != null) {
@@ -36,10 +37,10 @@ public class PackageExtractor {
                     	org.mql.java.elements.Package pkg=new org.mql.java.elements.Package(packageName);
                     	packages.add(pkg) ;
                     	//struct.add("package :"+packageName);
-                    	extractClasses(pkg,projectDirectory);
+                    	extractClasses(pkg,projet);
                         File souspackage =caintainsSousPackage(file);
-                        if(souspackage!=null) extractPackagesFromDirectory(file, packageName + ".",packages,projectDirectory);
-                    }else  extractPackagesFromDirectory(file, packageName + ".",packages,projectDirectory);
+                        if(souspackage!=null) extractPackagesFromDirectory(file, packageName + ".",packages,projet);
+                    }else  extractPackagesFromDirectory(file, packageName + ".",packages,projet);
                 }
             }
         }
