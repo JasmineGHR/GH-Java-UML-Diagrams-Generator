@@ -3,12 +3,12 @@ package org.mql.java.reflections;
 
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import org.mql.java.elements.Package;
+
 import org.mql.java.elements.ProjectExtractor;
 import org.mql.java.relations.*;
 

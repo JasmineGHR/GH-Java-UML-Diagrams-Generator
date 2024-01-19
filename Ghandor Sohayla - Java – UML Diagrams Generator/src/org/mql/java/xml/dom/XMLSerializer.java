@@ -1,6 +1,7 @@
 package org.mql.java.xml.dom;
 
 import org.w3c.dom.Document;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 import org.mql.java.relations.Agregation;
@@ -21,7 +22,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import java.io.File;
-import java.util.List;
 
 public class XMLSerializer {
    

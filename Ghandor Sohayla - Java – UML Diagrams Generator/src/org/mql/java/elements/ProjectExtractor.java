@@ -1,6 +1,5 @@
 package org.mql.java.elements;
 
-
 import static org.mql.java.reflections.PackageExtractor.*;
 
 import java.util.LinkedList;
@@ -17,10 +16,14 @@ public class ProjectExtractor {
 
 	public ProjectExtractor(String chemin) {
 		this.chemin= chemin;
-		packages=new LinkedList<org.mql.java.elements.Package>() ;
+		packages=new LinkedList<Package>() ;
 		relations=new LinkedList<Relation>() ;
-		extractPackages(this,packages);
+		
 		//extractRelations()
+	}
+	
+	public void ProjetInfo() {
+		extractPackages(this,packages);
 	}
 
 	public String getChemin() {
