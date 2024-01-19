@@ -8,8 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-
-import org.mql.java.elements.ProjectExtractor;
+import org.mql.java.elements.Project;
 import org.mql.java.relations.*;
 
 
@@ -44,7 +43,7 @@ public class RelationExtractor {
 //			
 //}
 	
-	public static void extractRelations(Class<?> clas, ProjectExtractor projet) {
+	public static void extractRelations(Class<?> clas, Project projet) {
 
 		for (Field field : clas.getDeclaredFields()) {
 			//System.out.println(field.getType().getName()+" "+Vector.class.isAssignableFrom(field.getType()));

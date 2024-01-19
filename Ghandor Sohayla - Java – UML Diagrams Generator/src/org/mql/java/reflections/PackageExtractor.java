@@ -2,10 +2,11 @@ package org.mql.java.reflections;
 
 import java.io.File;
 
+
 import java.util.List;
 
 import org.mql.java.elements.Package;
-import org.mql.java.elements.ProjectExtractor;
+import org.mql.java.elements.Project;
 
 import static org.mql.java.reflections.ClassExtractor.*;
 public class PackageExtractor {
@@ -15,7 +16,7 @@ public class PackageExtractor {
 		
 	}
 	
-	public static void  extractPackages(ProjectExtractor projet,List<Package> packages) {
+	public static void  extractPackages(Project projet,List<Package> packages) {
 	       
         File projectDir = new File(projet.getChemin());
 
@@ -26,7 +27,7 @@ public class PackageExtractor {
         }
     }
 
-	private static void extractPackagesFromDirectory(File directory, String parentPackage,List<Package> packages,ProjectExtractor projet) {
+	private static void extractPackagesFromDirectory(File directory, String parentPackage,List<Package> packages,Project projet) {
         File[] files = directory.listFiles();
         
         if (files != null) {

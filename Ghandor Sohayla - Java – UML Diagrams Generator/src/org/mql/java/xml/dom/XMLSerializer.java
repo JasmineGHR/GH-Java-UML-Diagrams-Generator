@@ -2,13 +2,14 @@ package org.mql.java.xml.dom;
 
 import org.w3c.dom.Document;
 
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 import org.mql.java.relations.Agregation;
 import org.mql.java.relations.Extention;
 import org.mql.java.relations.Relation;
 import org.mql.java.relations.Use;
-import org.mql.java.elements.ProjectExtractor;
+import org.mql.java.elements.Project;
 
 
 
@@ -25,7 +26,7 @@ import java.io.File;
 
 public class XMLSerializer {
    
-    public void serializeToXML(ProjectExtractor projet, String filePath) {
+    public void serializeToXML(Project projet, String filePath) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

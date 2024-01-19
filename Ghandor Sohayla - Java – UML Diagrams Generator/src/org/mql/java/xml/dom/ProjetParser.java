@@ -1,32 +1,22 @@
 package org.mql.java.xml.dom;
 
-import java.util.LinkedList;
-import java.util.List;
-
-
-
-import java.util.Vector;
 
 import org.mql.java.elements.* ;
 import org.mql.java.elements.Package;
 import org.mql.java.reflections.MyClassLoader;
-import org.mql.java.relations.Relation;
 
 //nous allons implementer un paseur Dom
 public class ProjetParser {
 
-	private List<Package> packages ;
-	private List<Relation> relations ;
 	public ProjetParser() {
 
 	}
-	public ProjectExtractor parse(String source) {
-		packages= new LinkedList<Package>() ;
-		relations= new LinkedList<Relation>() ;
+	public Project parse(String source) {
+		
 		XMLNode root=new XMLNode(source);
 		String name=root.getChild("Name").getValue() ;	
 		System.out.println(name);
-		ProjectExtractor projet=new ProjectExtractor(name) ;
+		Project projet=new Project(name) ;
 		
 		XMLNode data[] = root.getChildren();
 		for (XMLNode node : data) {
@@ -68,10 +58,7 @@ public class ProjetParser {
 					projet.getPackages().add(pkg)	;
 				}
 				
-			}
-				
-			
-				
+			}	
 			
 		}
 		return projet ;

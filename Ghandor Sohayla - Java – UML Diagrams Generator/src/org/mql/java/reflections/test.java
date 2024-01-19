@@ -1,7 +1,8 @@
 package org.mql.java.reflections;
 
 
-import org.mql.java.elements.ProjectExtractor;
+import org.mql.java.elements.Project;
+
 import org.mql.java.xml.dom.ProjetParser;
 import org.mql.java.xml.dom.XMLSerializer;
 
@@ -9,7 +10,7 @@ public class test {
 
 	
 	public test() {
-		ProjectExtractor p=new ProjectExtractor("C:\\\\Users\\\\af\\\\eclipse-workspace\\\\ma-workspace\\\\p01-revision\\\\bin");
+		Project p=new Project("C:\\\\Users\\\\af\\\\eclipse-workspace\\\\ma-workspace\\\\p01-revision\\\\bin");
 		
 		for (org.mql.java.elements.Package data : p.getPackages()) {
 				//System.out.println(data.getName());
@@ -29,14 +30,14 @@ public class test {
 		}
 		}
   public static void main(String[] args) {
-	  ProjectExtractor projet=new ProjectExtractor("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p01-revision\\bin");
+	  Project projet=new Project("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p01-revision\\bin");
 	  //C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p03-Annotations and Reflections\\bin
 	  projet.ProjetInfo();
 	  XMLSerializer serializer= new XMLSerializer() ;
       serializer.serializeToXML(projet, "output/projet.xml");
       
       ProjetParser parser=new ProjetParser() ;
-	    ProjectExtractor proj=parser.parse("output/projet.xml") ;
+      Project proj=parser.parse("output/projet.xml") ;
 	    for (org.mql.java.elements.Package pak : proj.getPackages()) {
 	    	System.out.println(pak.getName());
 	    	for (Class<?> clas : pak.getListClass()) {

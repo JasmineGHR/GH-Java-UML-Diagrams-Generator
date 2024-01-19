@@ -3,10 +3,11 @@ package org.mql.java.reflections;
 import java.io.File;
 
 
+
 import java.util.LinkedList;
 import java.util.List;
 
-import org.mql.java.elements.ProjectExtractor;
+import org.mql.java.elements.Project;
 
 import static org.mql.java.reflections.RelationExtractor.*;
 public class ClassExtractor {
@@ -14,7 +15,7 @@ public class ClassExtractor {
 	public ClassExtractor() {
 		// TODO Auto-generated constructor stub
 	}
-	public static void extractClasses(org.mql.java.elements.Package pkg, ProjectExtractor projet) {
+	public static void extractClasses(org.mql.java.elements.Package pkg, Project projet) {
 		MyClassLoader classLoader = MyClassLoader.createCustomClassLoader(projet.getChemin()) ;
 
 		//String classPath=System.getProperty("java.class.path") ;
