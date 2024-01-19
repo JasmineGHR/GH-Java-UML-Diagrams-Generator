@@ -1,4 +1,4 @@
-package org.mql.java.elements;
+package org.mql.java.models;
 
 import static org.mql.java.reflections.PackageExtractor.*;
 
@@ -34,11 +34,11 @@ public class Project {
 		this.chemin = chemin;
 	}
 
-	public List<org.mql.java.elements.Package> getPackages() {
+	public List<org.mql.java.models.Package> getPackages() {
 		return packages;
 	}
 
-	public void setPackages(List<org.mql.java.elements.Package> packages) {
+	public void setPackages(List<org.mql.java.models.Package> packages) {
 		this.packages = packages;
 	}
 	public List<Relation> getRelations() {

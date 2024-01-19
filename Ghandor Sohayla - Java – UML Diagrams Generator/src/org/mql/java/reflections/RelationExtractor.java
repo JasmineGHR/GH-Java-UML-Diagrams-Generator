@@ -2,13 +2,15 @@ package org.mql.java.reflections;
 
 
 
+import java.awt.Window.Type;
 import java.lang.reflect.Field;
-
+import java.lang.reflect.ParameterizedType;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
-import org.mql.java.elements.Project;
+import org.mql.java.models.Project;
 import org.mql.java.relations.*;
 
 
@@ -70,14 +72,28 @@ public class RelationExtractor {
 			
 }
 	private static Class<?> getTypeParameter(Field field) {
-        Class<?> fieldType = field.getType();
+	    java.lang.reflect.Type fieldType = field.getGenericType();
 
-        if (List.class.isAssignableFrom(fieldType)) {
-            // Si le champ est une sous-classe de List, récupérez le type paramétré
-            return (Class<?>) ((java.lang.reflect.ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
-        }
+	    if (fieldType instanceof ParameterizedType) {
+	        ParameterizedType parameterizedType = (ParameterizedType) fieldType;
+	        java.lang.reflect.Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
 
-        return null;
-    }
+	        if (actualTypeArguments.length == 1) {
+	            // Si le champ est une sous-classe de List, récupérez le type paramétré
+	            return (Class<?>) actualTypeArguments[0];
+	        } else if (actualTypeArguments.length == 2 && Map.class.isAssignableFrom(field.getType())) {
+	            // Si le champ est une sous-classe de Map, récupérez le type paramétré de la valeur
+	            return (Class<?>) actualTypeArguments[1];
+	        }
+	    } else if (fieldType instanceof Class && ((Class<?>) fieldType).isArray()) {
+	        // Si le champ est un tableau, récupérez le type du composant du tableau
+	        return ((Class<?>) fieldType).getComponentType();
+	    } else if (field.getType().isArray()) {
+	        // Si le champ est un tableau (type non paramétré), récupérez le type du composant du tableau
+	        return field.getType().getComponentType();
+	    }
+
+	    return null;
+	}
 
 }

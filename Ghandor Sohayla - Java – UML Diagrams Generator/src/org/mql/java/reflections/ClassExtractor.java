@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.mql.java.elements.Project;
+import org.mql.java.models.Project;
 
 import static org.mql.java.reflections.RelationExtractor.*;
 public class ClassExtractor {
@@ -15,8 +15,9 @@ public class ClassExtractor {
 	public ClassExtractor() {
 		// TODO Auto-generated constructor stub
 	}
-	public static void extractClasses(org.mql.java.elements.Package pkg, Project projet) {
+	public static void extractClasses(org.mql.java.models.Package pkg, Project projet) {
 		MyClassLoader classLoader = MyClassLoader.createCustomClassLoader(projet.getChemin()) ;
+		//System.out.println(projet.getChemin());
 
 		//String classPath=System.getProperty("java.class.path") ;
 		String packageFolder= pkg.getName().replace('.', '\\');
@@ -56,8 +57,9 @@ public class ClassExtractor {
 							}
 									      
 			} catch (ClassNotFoundException e) {
+				System.out.println("ERROR");
+				System.out.println(e.getMessage());
 				
-				e.printStackTrace();
 			}
 
 		}

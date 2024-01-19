@@ -1,8 +1,8 @@
 package org.mql.java.xml.dom;
 
 
-import org.mql.java.elements.* ;
-import org.mql.java.elements.Package;
+import org.mql.java.models.*;
+import org.mql.java.models.Package;
 import org.mql.java.reflections.MyClassLoader;
 
 //nous allons implementer un paseur Dom

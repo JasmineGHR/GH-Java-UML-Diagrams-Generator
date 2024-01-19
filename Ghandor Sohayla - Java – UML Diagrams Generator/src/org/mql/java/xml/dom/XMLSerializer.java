@@ -5,13 +5,11 @@ import org.w3c.dom.Document;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
+import org.mql.java.models.Project;
 import org.mql.java.relations.Agregation;
 import org.mql.java.relations.Extention;
 import org.mql.java.relations.Relation;
 import org.mql.java.relations.Use;
-import org.mql.java.elements.Project;
-
-
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,6 +24,7 @@ import java.io.File;
 
 public class XMLSerializer {
    
+	//hhhhhhhh
     public void serializeToXML(Project projet, String filePath) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -44,7 +43,7 @@ public class XMLSerializer {
             rootElement.appendChild(packages);
 
             // Ajouter des éléments pour chaque package et ses classes
-            for (org.mql.java.elements.Package pkg : projet.getPackages()) {
+            for (org.mql.java.models.Package pkg : projet.getPackages()) {
                 Element packageElement = doc.createElement("Package");
                 packages.appendChild(packageElement);
 
@@ -87,21 +86,25 @@ public class XMLSerializer {
             Element relations = doc.createElement("Relations");
             rootElement.appendChild(relations);
             for (Relation relation : projet.getRelations()) {
-            	if (relation instanceof Agregation) {
+            	System.out.println("relation");
+            	if (relation!=null && relation instanceof Agregation) {
             		Element agregation = doc.createElement("Agregation");
             		relations.appendChild(agregation);
             		
             		Element agregated = doc.createElement("agregated");
             		agregation.appendChild(agregated);
+                	System.out.println("1"+relation.getClas1().getName());
             		Text agregatedText = doc.createTextNode(relation.getClas1().getName());
             		agregated.appendChild(agregatedText);
+            		System.out.println("2"+relation.getClas2().getName());
             		Element agregat = doc.createElement("agregat");
             		agregation.appendChild(agregat);
+                	
             		Text agregatText = doc.createTextNode(relation.getClas2().getName());
             		agregat.appendChild(agregatText);
             		
 				}
-            	if (relation instanceof Use) {
+            	if (relation!=null &&  relation instanceof Use) {
             		Element utilisation = doc.createElement("Utilisation");
             		relations.appendChild(utilisation);
             		
@@ -115,7 +118,7 @@ public class XMLSerializer {
             		class2.appendChild(class2Text);
 					
 				}
-            	if (relation instanceof Extention) {
+            	if (relation!=null &&  relation instanceof Extention) {
             		Element Extention = doc.createElement("Extention");
             		relations.appendChild(Extention);
             		

@@ -5,8 +5,8 @@ import java.io.File;
 
 import java.util.List;
 
-import org.mql.java.elements.Package;
-import org.mql.java.elements.Project;
+import org.mql.java.models.Package;
+import org.mql.java.models.Project;
 
 import static org.mql.java.reflections.ClassExtractor.*;
 public class PackageExtractor {
@@ -35,7 +35,7 @@ public class PackageExtractor {
                 if (file.isDirectory()) {
                 	String packageName = parentPackage + file.getName();
                     if (containsJavaFiles(file)) {       
-                    	org.mql.java.elements.Package pkg=new org.mql.java.elements.Package(packageName);
+                    	org.mql.java.models.Package pkg=new org.mql.java.models.Package(packageName);
                     	packages.add(pkg) ;
                     	//struct.add("package :"+packageName);
                     	extractClasses(pkg,projet);
