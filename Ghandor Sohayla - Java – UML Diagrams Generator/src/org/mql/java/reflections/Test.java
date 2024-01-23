@@ -3,6 +3,7 @@ package org.mql.java.reflections;
 
 import org.mql.java.models.Project;
 import org.mql.java.xml.dom.ProjetParser;
+import org.mql.java.xml.dom.XMIExporter;
 import org.mql.java.xml.dom.XMLSerializer;
 
 public class Test {
@@ -29,17 +30,23 @@ public class Test {
 		}
 		}
   public static void main(String[] args) {
-	  Project projet=new Project("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p04-XML Parser\\bin");
+	  Project projet=new Project("C:\\Users\\af\\eclipse-workspace\\ma-workspace\\P05-MuliThreading\\bin");
+	  //C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p04-XML Parser\\bin"
 	  //C:\\Users\\af\\eclipse-workspace\\ma-workspace\\p03-Annotations and Reflections\\bin
 	  projet.ProjetInfo();
 	  XMLSerializer serializer= new XMLSerializer() ;
       serializer.serializeToXML(projet, "output/projet.xml");
+      
+      XMIExporter xmi=new XMIExporter();
+      xmi.exportToXMI(projet, "output/proj.xmi") ;
 	  //serializer.serializeToXML(projet);
+      
+      System.out.println("*******************************");
       
       ProjetParser parser=new ProjetParser() ;
       Project proj=parser.parse("output/projet.xml") ;
 	    for (org.mql.java.models.Package pak : proj.getPackages()) {
-	    	System.out.println(pak.getName());
+	    	//System.out.println(pak.getName());
 	    	for (Class<?> clas : pak.getListClass()) {
 				System.out.println(clas.getName());					
 			}

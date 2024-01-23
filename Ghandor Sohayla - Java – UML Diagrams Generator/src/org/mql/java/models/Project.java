@@ -19,7 +19,6 @@ public class Project {
 		packages=new LinkedList<Package>() ;
 		relations=new LinkedList<Relation>() ;
 		
-		//extractRelations()
 	}
 	
 	public void ProjetInfo() {

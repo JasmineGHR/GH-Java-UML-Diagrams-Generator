@@ -1,9 +1,7 @@
 package org.mql.java.reflections;
 
 import java.io.File;
-
-
-
+import java.lang.annotation.Annotation;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +15,18 @@ public class ClassExtractor {
 	}
 	public static void extractClasses(org.mql.java.models.Package pkg, Project projet) {
 		MyClassLoader classLoader = MyClassLoader.createCustomClassLoader(projet.getChemin()) ;
+		Package[] packages=classLoader.getDefinedPackages();
+		
+		if (classLoader.getDefinedPackages()!=null) {
+			for (Package pack : classLoader.getDefinedPackages()) {
+				for (Annotation cls : pack.getAnnotations()) {
+					
+				}
+				
+			}
+		}else System.out.println("********************************NULL");
+		
+		System.out.println("**************");
 		//System.out.println(projet.getChemin());
 
 		//String classPath=System.getProperty("java.class.path") ;
@@ -31,7 +41,10 @@ public class ClassExtractor {
 			try {
 				
 				Class<?> clas = Class.forName(pkg.getName()+"."+f.getName().replace(".class",""), true, classLoader);
-				clasList.add(clas);
+				//clas.getPackage();
+				//System.out.println(clas.getPackageName());
+				//System.out.println("hiiiiiiii"+clas.getName());
+				//clasList.add(clas);
 				
 				            if (!clas.isInterface() && !clas.isAnnotation() && !clas.isEnum()) {
 				            	pkg.getListClass().add(clas) ;
@@ -58,7 +71,7 @@ public class ClassExtractor {
 									      
 			} catch (ClassNotFoundException e) {
 				System.out.println("ERROR");
-				System.out.println(e.getMessage());
+				System.out.println("I AM HERE : "+e.getMessage());
 				
 			}
 

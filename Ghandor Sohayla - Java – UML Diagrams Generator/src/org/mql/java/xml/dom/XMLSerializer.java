@@ -86,17 +86,17 @@ public class XMLSerializer {
             Element relations = doc.createElement("Relations");
             rootElement.appendChild(relations);
             for (Relation relation : projet.getRelations()) {
-            	System.out.println("relation");
+            	//System.out.println("relation");
             	if (relation!=null && relation instanceof Agregation) {
             		Element agregation = doc.createElement("Agregation");
             		relations.appendChild(agregation);
             		
             		Element agregated = doc.createElement("agregated");
             		agregation.appendChild(agregated);
-                	System.out.println("1"+relation.getClas1().getName());
+                	//System.out.println("1"+relation.getClas1().getName());
             		Text agregatedText = doc.createTextNode(relation.getClas1().getName());
             		agregated.appendChild(agregatedText);
-            		System.out.println("2"+relation.getClas2().getName());
+            		//System.out.println("2"+relation.getClas2().getName());
             		Element agregat = doc.createElement("agregat");
             		agregation.appendChild(agregat);
                 	

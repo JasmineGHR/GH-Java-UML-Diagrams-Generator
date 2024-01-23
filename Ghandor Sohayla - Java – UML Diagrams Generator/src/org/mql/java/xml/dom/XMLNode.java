@@ -45,14 +45,7 @@ public class XMLNode {
    
    setNode(node);
    
-   //principale info sur node
-   System.out.println(
-     node.getNodeName()+" , "+
-     node.getNodeType()+" , "+
-     node.getNodeValue());
-      System.out.println("Comment node: "+Node.COMMENT_NODE);
-      System.out.println("Element node: "+Node.ELEMENT_NODE);
-      System.out.println("Document type node: "+Node.DOCUMENT_TYPE_NODE);
+  
   } catch (Exception e) {
    System.out.println("Erreur: "+e.getMessage());
   }
