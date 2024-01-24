@@ -1,7 +1,7 @@
 package org.mql.java.xml.dom;
 import org.w3c.dom.Document;
+
 import org.w3c.dom.Element;
-import org.w3c.dom.Text;
 import org.mql.java.models.Project;
 import org.mql.java.relations.Agregation;
 import org.mql.java.relations.Extention;
@@ -36,8 +36,8 @@ public class XMIExporter {
             doc.appendChild(xmiRoot);
 
             // Élément modèle UML
-            Element umlModel = doc.createElement("uml:Model");
-            xmiRoot.appendChild(umlModel);
+            Element umlModel = doc.createElement("uml:Class"); 
+            // Utilisez un type de classe existant dans votre modèle            xmiRoot.appendChild(umlModel);
 
             // Élément pour chaque package
             for (org.mql.java.models.Package pkg : project.getPackages()) {
@@ -78,7 +78,7 @@ public class XMIExporter {
                     umlPackage.appendChild(umlEnumeration);
                 }
             }
-
+            
             // Élément pour chaque relation
             Element umlRelations = doc.createElement("packagedElement");
             umlRelations.setAttribute("xmi:type", "uml:Package");

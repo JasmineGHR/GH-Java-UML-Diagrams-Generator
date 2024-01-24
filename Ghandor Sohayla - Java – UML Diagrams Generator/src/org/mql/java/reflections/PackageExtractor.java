@@ -35,12 +35,9 @@ public class PackageExtractor {
             for (File file : files) {
                 if (file.isDirectory()) {
                 	String packageName = parentPackage + file.getName();
-                	//System.out.println(packageName);
-                	//System.out.println("pkg : "+parentPackage);
                     if (containsJavaFiles(file)) {       
                     	Package pkg=new Package(packageName);
                     	packages.add(pkg) ;
-                    	//struct.add("package :"+packageName);
                     	extractClasses(pkg,projet);
                         File souspackage =caintainsSousPackage(file);
                         if(souspackage!=null) extractPackagesFromDirectory(file, packageName + ".",packages,projet);

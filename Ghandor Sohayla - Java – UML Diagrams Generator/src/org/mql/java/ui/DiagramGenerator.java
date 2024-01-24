@@ -1,15 +1,15 @@
 package org.mql.java.ui;
 import javax.swing.*;
 
+
 import org.mql.java.models.Project;
 import org.mql.java.xml.dom.ProjetParser;
 import org.mql.java.xml.dom.XMLSerializer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-public class DiagramGeneratorUI extends JFrame {
+public class DiagramGenerator extends JFrame {
 
     /**
 	 * 
@@ -17,7 +17,7 @@ public class DiagramGeneratorUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JTextField projectNameField;
 
-    public DiagramGeneratorUI() {
+    public DiagramGenerator() {
         initUI();
     }
 
@@ -56,14 +56,9 @@ public class DiagramGeneratorUI extends JFrame {
         if (!projectName.isEmpty()) {
             // Générer le projet et le fichier XML ou XMI
             generateProject(projectName);
-
-            // Charger et parcourir le fichier pour générer les diagrammes
             parseAndGenerateDiagrams(projectName);
-
-            // Afficher un message de succès
             JOptionPane.showMessageDialog(this, "Diagrammes générés avec succès!");
         } else {
-            // Afficher un message d'erreur si le champ est vide
             JOptionPane.showMessageDialog(this, "Veuillez saisir un nom de projet.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -81,13 +76,5 @@ public class DiagramGeneratorUI extends JFrame {
         
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                DiagramGeneratorUI ui = new DiagramGeneratorUI();
-                ui.setVisible(true);
-            }
-        });
-    }
+   
 }

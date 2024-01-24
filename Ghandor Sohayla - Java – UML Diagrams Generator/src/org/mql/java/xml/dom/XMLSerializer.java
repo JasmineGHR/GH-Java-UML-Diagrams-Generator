@@ -54,25 +54,21 @@ public class XMLSerializer {
                 Element classesElement = doc.createElement("Classes");
                 packageElement.appendChild(classesElement);
 
-                System.out.println("jjjjjjjjjjj");
                 // Ajouter des éléments pour chaque classe
                 for (Class<?> className : pkg.getListClass()) {
                     Element classElement = doc.createElement("Class");
                     classElement.appendChild(doc.createTextNode(className.getName()));
                     classesElement.appendChild(classElement);
-                    System.out.println("fffffffff");
                 }
                 for (Class<?> interfaceName : pkg.getListInterface()) {
                     Element InterfaceElement = doc.createElement("Interface");
                     InterfaceElement.appendChild(doc.createTextNode(interfaceName.getName()));
                     classesElement.appendChild(InterfaceElement);
-                    System.out.println("fffffffff");
                 }
                 for (Class<?> annotationName : pkg.getListAnnot()) {
                     Element annotationElement = doc.createElement("Annotation");
                     annotationElement.appendChild(doc.createTextNode(annotationName.getName()));
                     classesElement.appendChild(annotationElement);
-                    System.out.println("fffffffff");
                 }
                 for (Class<?> enumName : pkg.getListEnum()) {
                     Element enumElement = doc.createElement("Enumeration");

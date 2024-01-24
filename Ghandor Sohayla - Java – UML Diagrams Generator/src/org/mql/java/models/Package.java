@@ -11,7 +11,6 @@ public class Package {
 	private List<Class<?>> listInterface ; 
 	private List<Class<?>> listEnum ; 
 	private List<Class<?>> listAnnot ; 
-	//private List<Relation> relations ;
 
 	public Package(String name) {
 		this.name = name ;
@@ -19,7 +18,6 @@ public class Package {
 		listInterface=new LinkedList<Class<?>>();
 		listEnum=new LinkedList<Class<?>>();
 		listAnnot=new LinkedList<Class<?>>();
-		//relations=new LinkedList<Relation>();
 		
 	}
 
@@ -62,10 +60,10 @@ public class Package {
 	public void setListAnnot(List<Class<?>> listAnnot) {
 		this.listAnnot = listAnnot;
 	}
+
 	
-//	public List<Relation> getRelations() {
-//		return relations;
-//	}
+
+	
 
 	
 }

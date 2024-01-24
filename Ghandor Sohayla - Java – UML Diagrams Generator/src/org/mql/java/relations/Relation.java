@@ -42,7 +42,11 @@ public class Relation {
 	}
 
 	
-	
+	@Override
+	public String toString() {
+		return "realtion [fils=" + clas1.getName() + ", parent=" + clas1.getName() + "]";
+
+	}
 	
 	
 
