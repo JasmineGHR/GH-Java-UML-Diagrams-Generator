@@ -18,6 +18,8 @@ public class Test {
 		exp03() ;
 		exp04();
 		}
+	
+	
   private void exp04() {
 		DiagramGenerator diagram= new DiagramGenerator();
 		diagram.setVisible(true);

@@ -74,9 +74,7 @@ public class XMLSerializer {
                     Element enumElement = doc.createElement("Enumeration");
                     enumElement.appendChild(doc.createTextNode(enumName.getName()));
                     classesElement.appendChild(enumElement);
-                }
-               
-
+                }          
             }
 
             Element relations = doc.createElement("Relations");

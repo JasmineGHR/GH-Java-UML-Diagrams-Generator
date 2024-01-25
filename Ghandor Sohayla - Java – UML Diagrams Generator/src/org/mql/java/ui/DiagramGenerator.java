@@ -18,10 +18,10 @@ public class DiagramGenerator extends JFrame {
 	private JTextField projectNameField;
 
     public DiagramGenerator() {
-        initUI();
+        init();
     }
 
-    private void initUI() {
+    private void init() {
         // Créer les composants Swing
         JLabel projectNameLabel = new JLabel("Nom du Projet:");
         projectNameField = new JTextField(20);
@@ -73,6 +73,7 @@ public class DiagramGenerator extends JFrame {
     private void parseAndGenerateDiagrams(String projectName) {
     	ProjetParser parser=new ProjetParser() ;
         Project proj=parser.parse("output/projet.xml") ;
+        //code pour generer les diagrammes a partir du fichier xml ou xmi generé 
         
     }
 

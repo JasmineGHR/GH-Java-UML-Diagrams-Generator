@@ -35,7 +35,7 @@ public class PackageExtractor {
             for (File file : files) {
                 if (file.isDirectory()) {
                 	String packageName = parentPackage + file.getName();
-                    if (containsJavaFiles(file)) {       
+                    if (containsClasses(file)) {       
                     	Package pkg=new Package(packageName);
                     	packages.add(pkg) ;
                     	extractClasses(pkg,projet);
@@ -60,7 +60,7 @@ public class PackageExtractor {
         return null;
 	}
 
-	private static boolean containsJavaFiles(File directory) {
+	private static boolean containsClasses(File directory) {
         File[] files = directory.listFiles();
         if (files != null) {
             for (File file : files) {
